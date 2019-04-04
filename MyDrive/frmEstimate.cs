@@ -1,0 +1,223 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace patio {
+    public partial class frmEstimate : Form {
+
+        // setup global veriables
+        double dblExchangeRate;
+        double dblBrickPrice;
+        double dblConcretePrice;
+        double dblTarmacPrice;
+        double dblGravelPrice;
+        double dblItemPrice;
+        string strSelectedItem = "";
+        string strFoundationType = "Standard";
+
+        public frmEstimate() {
+            InitializeComponent();
+            controlVisability(true); // set visability for startup
+            tbBrickPrice.Text = "35.75";
+            tbConcretePrice.Text = "25.50";
+            tbTarmacPrice.Text = "20.00";
+            tbGravelPrice.Text = "29.75";
+            tbExchangeRate.Text = "1.45";
+            }
+
+
+
+
+        private void btnStart_Click(object sender, EventArgs e) {
+
+            // check if any textbox is empty
+            if(string.IsNullOrWhiteSpace(tbBrickPrice.Text) || string.IsNullOrWhiteSpace(tbConcretePrice.Text)|| string.IsNullOrWhiteSpace(tbExchangeRate.Text) || string.IsNullOrWhiteSpace(tbGravelPrice.Text)|| string.IsNullOrWhiteSpace(tbTarmacPrice.Text)) {
+
+                // check all textboxes
+                MessageBox.Show("Exchange rate or prices not set",
+                    "Reminder",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+                }
+            else {
+   
+
+                try {
+
+                    // set all prices depending on input
+                    dblBrickPrice = double.Parse(tbBrickPrice.Text);
+                    dblConcretePrice = double.Parse(tbConcretePrice.Text);
+                    dblExchangeRate = double.Parse(tbExchangeRate.Text);
+                    dblGravelPrice = double.Parse(tbGravelPrice.Text);
+                    dblTarmacPrice = double.Parse(tbTarmacPrice.Text);
+                   
+                    controlVisability(false);
+
+
+                    lblHeading.ForeColor = Color.Green;
+                    lblOutput.BackColor = Color.Green;
+
+                    }
+                catch(Exception) {
+
+                    MessageBox.Show("Only enter numbers",  // error message if numeric values not entered
+              "Reminder",
+              MessageBoxButtons.OK,
+              MessageBoxIcon.Exclamation,
+              MessageBoxDefaultButton.Button1);
+                    }
+
+                tbGbpPrice.Text = "1";
+                tbEuroPrice.Text = dblExchangeRate.ToString();
+                rbBrick.Select();
+                rbStandard.Select();
+
+                }
+
+            }
+        public void controlVisability(bool shouldShow) { // control visabilaty between screens
+            tbTarmacPrice.Visible = shouldShow;
+            tbGravelPrice.Visible = shouldShow;
+            tbExchangeRate.Visible = shouldShow;
+            tbConcretePrice.Visible = shouldShow;
+            tbBrickPrice.Visible = shouldShow;
+            lblCurency.Visible = shouldShow;
+            lblExchange.Visible = shouldShow;
+            lblPricePerSqMe.Visible = shouldShow;
+            cmdStart.Visible = shouldShow;
+
+            grpFoundations.Visible = !shouldShow;
+            rbExtraDeep.Visible = !shouldShow;
+            rbStandard.Visible = !shouldShow;
+
+            tbGbpPrice.Visible = !shouldShow;
+            tbEuroPrice.Visible = !shouldShow;
+            tbWidth.Visible = !shouldShow;
+            tbLength.Visible = !shouldShow;
+            lblLength.Visible = !shouldShow;
+            lblWidth.Visible = !shouldShow;
+            lblMetres.Visible = !shouldShow;
+            lblMetres2.Visible = !shouldShow;
+            lblEuro.Visible = !shouldShow;
+            lblGbp.Visible = !shouldShow;
+            lblOutput.Visible = !shouldShow;
+            cmdCalculate.Visible = !shouldShow;
+            cmdClear.Visible = !shouldShow;
+
+
+            }
+        private void Form1_Load(object sender, EventArgs e) {
+
+            }
+
+        private void btnCalculate_Click(object sender, EventArgs e) {
+            if(string.IsNullOrWhiteSpace(tbLength.Text) || string.IsNullOrWhiteSpace(tbWidth.Text)) {
+                MessageBox.Show("Length,Width not entered.\nPlease enter dimensions",  // message box if dimensions not entered correct
+                    "Reminder",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+                }
+            else {
+                try {
+                    // calculate price and output it
+                    tbGbpPrice.Text = "£" + String.Format("{0:0.##}", calculatePrice(dblItemPrice, double.Parse(tbLength.Text), double.Parse(tbWidth.Text)) );
+                    double euroPrice = calculatePrice(dblItemPrice, double.Parse(tbLength.Text), double.Parse(tbWidth.Text)) * dblExchangeRate;
+                    tbEuroPrice.Text = "€" + String.Format("{0:0.##}", euroPrice );
+                    lblOutput.BackColor = Color.White;
+                    lblOutput.Text = strSelectedItem + " selected with " + strFoundationType + " foundation";
+
+                    }
+                catch(Exception) {
+
+                    MessageBox.Show("Only enter numbers !",             // message box checking for numeric values
+                                 "Reminder",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Exclamation,
+                                 MessageBoxDefaultButton.Button1);
+                    }
+                }
+            }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
+            }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            const string message = "Are you sure that you want to exit this application ?";  // message box on exit
+            const string caption = "Exit";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes) {
+                Application.Exit();
+                }
+            else if(result == DialogResult.Yes) {
+                this.Close();
+                }
+            }
+
+        private void rbBrick_CheckedChanged(object sender, EventArgs e) {
+     
+            dblItemPrice = dblBrickPrice;       // set price to brick price
+            strSelectedItem = "Bricks";         // set selected item to bricks
+            }
+
+        private void rbConcrete_CheckedChanged(object sender, EventArgs e) {
+            dblItemPrice = dblConcretePrice;     // set price to concrete price
+            strSelectedItem = "Concrete";       // set selected item to concrete
+
+            }
+
+        private void rbTarmac_CheckedChanged(object sender, EventArgs e) {
+            dblItemPrice = dblTarmacPrice;      // set price to tarmac
+            strSelectedItem = "Tarmac";         // set selected item to tarmac
+
+            }
+
+        private void rbGravel_CheckedChanged(object sender, EventArgs e) {
+            dblItemPrice = dblGravelPrice;      // set price to gravel
+            strSelectedItem = "Gravel";         // set selected item to gravel
+
+            }
+ 
+
+        private void cmdClear_Click(object sender, EventArgs e) {
+            // clear all text fields
+            tbEuroPrice.Clear();
+            tbGbpPrice.Clear();  
+            tbLength.Clear();
+            tbWidth.Clear();
+
+            lblOutput.Clear();
+            lblOutput.BackColor = Color.Green;
+            }
+
+        private void rbExtraDeep_CheckedChanged(object sender, EventArgs e) {
+            strFoundationType = "Extra Deep";       // set foundations to extra deep
+            }
+
+        private void rbStandard_CheckedChanged(object sender, EventArgs e) {
+            strFoundationType = "Standard";         // set foundation to standard
+
+            }
+        private double calculatePrice(double dblItemPrice, double dblLength, double dblWidth) {
+            double total = 0;
+            if(rbExtraDeep.Checked) {
+                double subtotal = dblItemPrice * (dblLength * dblWidth);
+                total = subtotal + (subtotal * .25);
+                }
+            else {
+                total = dblItemPrice * (dblLength * dblWidth);
+
+                }
+            return total;
+
+            }
+        }
+    }

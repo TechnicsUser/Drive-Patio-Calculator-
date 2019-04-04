@@ -1,0 +1,9 @@
+C:\Users\SwDev07\Downloads\disco2\patio\bin\Debug\patio.exe.config
+C:\Users\SwDev07\Downloads\disco2\patio\bin\Debug\patio.exe
+C:\Users\SwDev07\Downloads\disco2\patio\bin\Debug\patio.pdb
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.csprojResolveAssemblyReference.cache
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.Form1.resources
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.Properties.Resources.resources
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.csproj.GenerateResource.Cache
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.exe
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.pdb

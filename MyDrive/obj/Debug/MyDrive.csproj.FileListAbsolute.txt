@@ -1,0 +1,20 @@
+C:\Users\SwDev07\Downloads\disco2\patio\bin\Debug\patio.exe.config
+C:\Users\SwDev07\Downloads\disco2\patio\bin\Debug\patio.exe
+C:\Users\SwDev07\Downloads\disco2\patio\bin\Debug\patio.pdb
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.frmEstimate.resources
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.Properties.Resources.resources
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\MyDrive.csproj.GenerateResource.Cache
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.exe
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\patio.pdb
+C:\Users\SwDev07\Downloads\disco2\patio\obj\Debug\MyDrive.csprojResolveAssemblyReference.cache
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\bin\Debug\patio.exe.config
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\bin\Debug\patio.exe
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\bin\Debug\patio.pdb
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\obj\Debug\patio.frmEstimate.resources
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\obj\Debug\patio.Properties.Resources.resources
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\obj\Debug\MyDrive.csproj.GenerateResource.Cache
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\obj\Debug\patio.exe
+C:\Users\SwDev07\Documents\Visual Studio 2015\Projects\MyDrive\obj\Debug\patio.pdb
+C:\Users\SwDev07\Desktop\7540_C# Stephen_Smith\MyDrive\bin\Debug\patio.exe.config
+C:\Users\SwDev07\Desktop\7540_C# Stephen_Smith\MyDrive\obj\Debug\patio.exe
+C:\Users\SwDev07\Desktop\7540_C# Stephen_Smith\MyDrive\obj\Debug\patio.pdb
